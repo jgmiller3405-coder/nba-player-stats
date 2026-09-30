@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Three-Point Takeover | NBA Box Score Report</title>
+<meta name="description" content="Thirty years of NBA regular-season player box scores, and what changed in how the game is played.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>The <em>Three-Point</em> Takeover</h1>
+    <div class="byline">By Jason Miller &middot; NBA regular-season player box scores, 1994-95 to 2025-26</div>
+    <p class="summary">
+      This report covers {{n(R.head.kept_rows)}} player appearances from {{n(R.head.games)}} regular-season games
+      ({{R.head.first_date}} to {{R.head.last_date}}). The clearest change is the shot itself: the average player now
+      attempts {{f(R.head.tpa_last,1)}} threes a game, up from {{f(R.head.tpa_first,1)}} in 1995-96, and threes are
+      {{pct(R.head.tpar_last)}} of all shots, up from {{pct(R.head.tpar_first)}}. Scoring efficiency rose with it,
+      while free throws, offensive rebounds and the old post-player roles faded. Home-court advantage is still real
+      but has weakened. The <a href="dashboard.html">dashboard</a> lets you slice all of this yourself.
+    </p>
+    <div class="stats">
+      <div class="stat"><div class="num">{{n(R.head.kept_rows)}}</div><div class="lab">player appearances analysed (rows with minutes played)</div></div>
+      <div class="stat"><div class="num">{{f(R.head.tpar_last*100,1)}}%</div><div class="lab">of shots were threes in 2025-26 (was {{pct(R.head.tpar_first)}} in 1995-96)</div></div>
+      <div class="stat"><div class="num">{{n(R.head.total_tpm)}}</div><div class="lab">three-pointers made in the data set</div></div>
+      <div class="stat"><div class="num">{{pct(R.head.home_win)}}</div><div class="lab">of home appearances came in a home win</div></div>
+      <div class="stat"><div class="num">{{n(R.head.players)}}</div><div class="lab">different players who appeared</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="finding" id="f1">
+  <div class="kicker">01</div>
+  <h2>Threes per player doubled in thirty years</h2>
+  <p>In 1995-96 the average player appearance included {{f(R.s_tpa[1],2)}} three-point attempts. By 2025-26 it was
+  {{f(R.s_tpa[31],2)}}, a rise of {{pct(R.s_tpa[31]/R.s_tpa[1]-1)}}. The climb was slow until 2012-13
+  ({{f(R.s_tpa[18],2)}}) and then steep.</p>
+  <p>Measured as a share of all field-goal attempts, threes went from {{pct(R.s_tpar[1])}} to {{pct(R.s_tpar[31])}}.
+  Roughly two of every five shots now come from behind the arc.</p>
+  <div class="chart-card"><div class="cap">Three-point attempts per player appearance (left) and share of shots that are threes (right)</div>
+  <div class="chart-box"><canvas id="c1"></canvas></div></div>
+</section>
+
+<section class="finding" id="f2">
+  <div class="kicker">02</div>
+  <h2>Shooters got more efficient while shooting from farther</h2>
+  <p>More threes did not mean worse shooting. Three-point accuracy moved from {{pct(R.s_tpp[1])}} in 1995-96 to
+  {{pct(R.s_tpp[31])}} in 2025-26. True shooting percentage, which credits threes and free throws, rose from
+  {{pct(R.s_ts[1])}} to {{pct(R.s_ts[31])}}, with its low point of {{pct(Math.min(...R.s_ts))}} in
+  {{R.season_labels[R.s_ts.indexOf(Math.min(...R.s_ts))]}}.</p>
+  <div class="chart-card"><div class="cap">3-point percentage and true shooting percentage by season</div>
+  <div class="chart-box"><canvas id="c2"></canvas></div></div>
+</section>
+
+<section class="finding" id="f3">
+  <div class="kicker">03</div>
+  <h2>Free throws faded as threes arrived</h2>
+  <p>Free-throw attempts per appearance fell from {{f(R.s_fta[1],2)}} in 1995-96 to {{f(R.s_fta[31],2)}} in
+  2025-26, a drop of {{pct(1-R.s_fta[31]/R.s_fta[1])}}. The peak was {{f(Math.max(...R.s_fta.slice(1)),2)}} in
+  {{R.season_labels[R.s_fta.indexOf(Math.max(...R.s_fta.slice(1)))]}}. Free-throw accuracy barely changed
+  ({{pct(R.s_ftp[1])}} then, {{pct(R.s_ftp[31])}} now), so this is about how often players get to the line, not how well they shoot there.</p>
+  <div class="chart-card"><div class="cap">Free-throw attempts per player appearance</div>
+  <div class="chart-box"><canvas id="c3"></canvas></div></div>
+</section>
+
+<section class="finding" id="f4">
+  <div class="kicker">04</div>
+  <h2>Offensive rebounds are a shrinking part of the game</h2>
+  <p>Offensive rebounds per appearance dropped from {{f(R.s_oreb[1],2)}} in 1995-96 to {{f(R.s_oreb[31],2)}} in 2025-26
+  ({{pct(1-R.s_oreb[31]/R.s_oreb[1])}} lower). Teams have moved players to the perimeter and send fewer to the glass,
+  and a long three-pointer produces longer rebounds that are harder to win back.
+  Total rebounds per appearance went from {{f(R.s_reb[1],2)}} to {{f(R.s_reb[31],2)}}.</p>
+  <div class="chart-card"><div class="cap">Offensive and total rebounds per player appearance</div>
+  <div class="chart-box"><canvas id="c4"></canvas></div></div>
+</section>
+
+<section class="finding" id="f5">
+  <div class="kicker">05</div>
+  <h2>Huge scoring nights are now routine</h2>
+  <p>There were {{sum(R.g40.slice(1,11))}} games of 40 or more points in the ten seasons from 1995-96 to 2004-05.
+  In the ten seasons from 2016-17 to 2025-26 there were {{sum(R.g40.slice(22,32))}}. For 50-point games the counts are
+  {{sum(R.g50.slice(1,11))}} and {{sum(R.g50.slice(22,32))}}. The largest single game in the data is
+  {{R.top_games[0][0]}} with {{R.top_games[0][1]}} points for {{R.top_games[0][2]}} on {{R.top_games[0][3]}}, ahead of
+  {{R.top_games[1][0]}}'s {{R.top_games[1][1]}} in {{R.top_games[1][3].slice(0,4)}}.</p>
+  <div class="chart-card"><div class="cap">Games with 40+ and 50+ points, by season (1994-95 covers only December onward)</div>
+  <div class="chart-box"><canvas id="c5"></canvas></div></div>
+</section>
+
+<section class="finding" id="f6">
+  <div class="kicker">06</div>
+  <h2>Per minute, bench players score as well as starters</h2>
+  <p>Starting guards average {{f(R.role_pts[3],1)}} points an appearance and bench players {{f(R.role_pts[0],1)}}, which
+  looks like a big gap. But starters play far more. Scaled to 36 minutes, bench players score {{f(R.role_pts36[0],1)}}
+  against {{f(R.role_pts36[3],1)}} for guards, {{f(R.role_pts36[2],1)}} for forwards and {{f(R.role_pts36[1],1)}} for centers.
+  The gap in playing time, not in scoring ability, explains most of the difference.</p>
+  <div class="chart-card"><div class="cap">Points per appearance vs points per 36 minutes, by role</div>
+  <div class="chart-box"><canvas id="c6"></canvas></div></div>
+</section>
+
+<section class="finding" id="f7">
+  <div class="kicker">07</div>
+  <h2>Each starting position still has its own signature</h2>
+  <p>Starting centers grab {{f(R.role_reb[1],1)}} rebounds and block {{f(R.role_blk[1],2)}} shots an appearance, the
+  highest of any role. Starting guards lead in assists at {{f(R.role_ast[3],1)}}, about double the
+  {{f(R.role_ast[1],1)}} that centers average. Forwards sit between the two. Bench players trail in every category
+  mostly because they play fewer minutes.</p>
+  <div class="chart-card"><div class="cap">Per-appearance averages by role</div>
+  <div class="chart-box"><canvas id="c7"></canvas></div></div>
+</section>
+
+<section class="finding" id="f8">
+  <div class="kicker">08</div>
+  <h2>Home-court advantage has slipped</h2>
+  <p>Across the whole data set, {{pct(R.head.home_win)}} of home appearances were in wins. The share was
+  {{pct(R.home_win[1])}} in 1995-96 and {{pct(R.home_win[31])}} in 2025-26. Its lowest point was
+  {{pct(Math.min(...R.home_win))}} in {{R.season_labels[R.home_win.indexOf(Math.min(...R.home_win))]}}, the pandemic season
+  played in arenas with few or no fans. Home players also score {{f(R.home_pts[31]-R.away_pts[31],2)}} more points
+  per appearance than visitors in 2025-26.</p>
+  <div class="chart-card"><div class="cap">Share of home-team appearances that were wins, by season (50% would mean no advantage)</div>
+  <div class="chart-box"><canvas id="c8"></canvas></div></div>
+</section>
+
+<section class="finding" id="f9">
+  <div class="kicker">09</div>
+  <h2>{{R.fr_labels[0]}} lead the league in threes, but volume alone does not win</h2>
+  <p>From 2021-22 to 2025-26 the {{R.fr_labels[0]}} took {{f(R.fr_tpa[0],2)}} threes per appearance, the most of any
+  franchise, and won {{pct(R.fr_win[0])}} of those appearances. The least three-happy team,
+  {{R.fr_labels[29]}}, took {{f(R.fr_tpa[29],2)}}. The correlation between three-point volume and win rate across the
+  30 franchises is {{f(R.fr_corr_tpa_win,2)}}, positive but modest. Accuracy and personnel matter as much as attempts.</p>
+  <div class="chart-card"><div class="cap">Three-point attempts per player appearance, 2021-22 to 2025-26, by franchise</div>
+  <div class="chart-box tall"><canvas id="c9"></canvas></div></div>
+</section>
+
+<section class="finding" id="f10">
+  <div class="kicker">10</div>
+  <h2>{{R.lead_labels[0]}} is far ahead on career scoring in this window</h2>
+  <p>{{R.lead_labels[0]}} totals {{n(R.lead_pts[0])}} points in {{n(R.lead_games[0])}} appearances
+  ({{f(R.lead_ppg[0],1)}} a game). {{R.lead_labels[1]}} is second with {{n(R.lead_pts[1])}}, and
+  {{R.lead_labels[2]}} third with {{n(R.lead_pts[2])}}. Totals only count games from December 1994 onward,
+  so players whose careers started earlier are undercounted.</p>
+  <div class="chart-card"><div class="cap">Career regular-season points in the data set, top ten players</div>
+  <div class="chart-box"><canvas id="c10"></canvas></div></div>
+</section>
+
+<section class="finding notes" id="data">
+  <div class="kicker">DATA</div>
+  <h2>About the data set</h2>
+
+  <h3>Where it comes from</h3>
+  <p>A public NBA box-score file named <code>PlayerStatistics.csv</code> (player-level game logs), trimmed to the
+  regular season. It is not stored in this repository because it is {{n(R.head.raw_rows)}} rows and over 100 MB, past GitHub's file limit.
+  <code>scripts/build_data.py</code> reads it and writes the small summary files this site loads.</p>
+
+  <h3>What one row is</h3>
+  <p>One row is one player in one game for one team: his minutes, points, assists, rebounds, steals, blocks,
+  shots made and attempted, turnovers and fouls. The source names its columns <code>ppg</code>, <code>apg</code>
+  and so on, but they hold single-game values, not averages.</p>
+
+  <h3>Rows dropped</h3>
+  <ul>
+    <li><strong>{{n(R.head.dropped_nan)}} rows with no minutes recorded.</strong> Nearly all are players who did not play
+    (coach's decision, injury, rest). They have no stats to average, and keeping them would pull every per-appearance rate down.</li>
+    <li><strong>{{n(R.head.dropped_zero)}} rows with exactly 0 minutes.</strong> Same reason. A few hundred of these show points
+    anyway, which is a recording error, so they are dropped too.</li>
+    <li>That leaves {{n(R.head.kept_rows)}} rows, {{pct(R.head.kept_rows/R.head.raw_rows)}} of the file.</li>
+  </ul>
+  <p>Other choices: seasons are labelled by the year they start (games from September on belong to that year's season).
+  The first season, 1994-95, begins in December 1994 in this file, so it is partial and I use 1995-96 as the starting point
+  for comparisons. The file is missing DNP rows before 1996, but since those are dropped anyway, this does not change any rate.
+  Teams are grouped by franchise: Bobcats with Hornets, SuperSonics with Thunder, New Jersey with Brooklyn, Vancouver with Memphis,
+  Bullets with Wizards, and the original Charlotte Hornets (to 2001-02) with the New Orleans Pelicans.</p>
+
+  <h3>How each number is computed</h3>
+  <table>
+    <tr><th>Measure</th><th>Formula</th></tr>
+    <tr><td>Per appearance average (points, assists, rebounds, threes attempted, etc.)</td><td>sum of the stat over kept rows &divide; number of kept rows in the group. Every appearance counts once, whatever the minutes.</td></tr>
+    <tr><td>Per 36 minutes</td><td>total points &divide; total minutes &times; 36</td></tr>
+    <tr><td>Three-point %, free-throw %</td><td>total made &divide; total attempted (not an average of player percentages)</td></tr>
+    <tr><td>Three-point share of shots</td><td>three-pointers attempted &divide; field goals attempted</td></tr>
+    <tr><td>True shooting %</td><td>points &divide; (2 &times; (field goals attempted + 0.44 &times; free throws attempted))</td></tr>
+    <tr><td>Home win share</td><td>share of home-team appearances where the team won. It weights each game by the number of players who played, so it tracks team win % but is not identical to it.</td></tr>
+    <tr><td>Franchise win rate</td><td>share of a franchise's appearances in a win, 2021-22 to 2025-26</td></tr>
+    <tr><td>Correlation (finding 9)</td><td>Pearson correlation across the 30 franchises of three-point attempts per appearance and win rate</td></tr>
+    <tr><td>Percent change</td><td>(later value &divide; earlier value) &minus; 1</td></tr>
+  </table>
+</section>
+
+<footer>Built by Jason Miller with plain HTML, CSS and JavaScript. Charts use Chart.js. Source and build script are on
+<a href="https://github.com/jgmiller3405-coder/nba-player-stats">GitHub</a>.</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/common.js"></script>
+<script src="data/report_data.js"></script>
+<script src="js/report.js"></script>
+</body>
+</html>
