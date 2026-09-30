@@ -1,0 +1,4 @@
+*.csv.raw
+__pycache__/
+.venv/
+.temp/
