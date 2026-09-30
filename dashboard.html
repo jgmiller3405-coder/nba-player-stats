@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Box Score Dashboard | NBA Box Score Report</title>
+<meta name="description" content="Filter thirty years of NBA player box scores by season, franchise, role, venue and result.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <div class="dash-head">
+    <h1>Box Score Dashboard</h1>
+    <p>Every number recalculates in your browser from the season &times; franchise &times; role &times; venue &times; result summary in <code>data/cube.csv</code>. Only appearances with minutes played are counted.</p>
+  </div>
+
+  <div class="filters" id="filters">
+    <div><label for="f-from">Season from</label><select id="f-from"></select></div>
+    <div><label for="f-to">Season to</label><select id="f-to"></select></div>
+    <div><label for="f-franchise">Franchise</label><select id="f-franchise"></select></div>
+    <div><label for="f-role">Role</label><select id="f-role"></select></div>
+    <div><label for="f-venue">Venue</label><select id="f-venue"></select></div>
+    <div><label for="f-result">Result</label><select id="f-result"></select></div>
+    <div><button class="reset" id="reset" type="button">Reset all filters</button></div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="controls filters" style="margin-top:0">
+    <div><label for="measure">Measure shown in charts</label><select id="measure"></select></div>
+    <div><label for="breakdown">Break down by</label><select id="breakdown"></select></div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-card"><div class="cap" id="cap1"></div><div class="chart-box"><canvas id="d1"></canvas></div></div>
+    <div class="chart-card"><div class="cap" id="cap2"></div><div class="chart-box"><canvas id="d2"></canvas></div></div>
+    <div class="chart-card"><div class="cap" id="cap3"></div><div class="chart-box"><canvas id="d3"></canvas></div></div>
+    <div class="chart-card"><div class="cap" id="cap4"></div><div class="chart-box"><canvas id="d4"></canvas></div></div>
+  </div>
+
+  <div class="table-wrap">
+    <h3>Numbers behind the view</h3>
+    <div id="table"></div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
