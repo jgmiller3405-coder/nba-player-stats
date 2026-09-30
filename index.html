@@ -48,8 +48,8 @@
 <section class="finding" id="f2">
   <div class="kicker">02</div>
   <h2>Shooters got more efficient while shooting from farther</h2>
-  <p>More threes did not mean worse shooting. Three-point accuracy moved from {{pct(R.s_tpp[1])}} in 1995-96 to
-  {{pct(R.s_tpp[31])}} in 2025-26. True shooting percentage, which credits threes and free throws, rose from
+  <p>More threes did not mean worse shooting. Three-point accuracy barely moved: {{pct(R.s_tpp[1])}} in 1995-96 and
+  {{pct(R.s_tpp[31])}} in 2025-26, even though players now take twice as many. True shooting percentage, which credits threes and free throws, rose from
   {{pct(R.s_ts[1])}} to {{pct(R.s_ts[31])}}, with its low point of {{pct(Math.min(...R.s_ts))}} in
   {{R.season_labels[R.s_ts.indexOf(Math.min(...R.s_ts))]}}.</p>
   <div class="chart-card"><div class="cap">3-point percentage and true shooting percentage by season</div>
@@ -71,8 +71,7 @@
   <div class="kicker">04</div>
   <h2>Offensive rebounds are a shrinking part of the game</h2>
   <p>Offensive rebounds per appearance dropped from {{f(R.s_oreb[1],2)}} in 1995-96 to {{f(R.s_oreb[31],2)}} in 2025-26
-  ({{pct(1-R.s_oreb[31]/R.s_oreb[1])}} lower). Teams have moved players to the perimeter and send fewer to the glass,
-  and a long three-pointer produces longer rebounds that are harder to win back.
+  ({{pct(1-R.s_oreb[31]/R.s_oreb[1])}} lower). A likely reason is that more players now spend the possession on the perimeter, though this data set cannot show why.
   Total rebounds per appearance went from {{f(R.s_reb[1],2)}} to {{f(R.s_reb[31],2)}}.</p>
   <div class="chart-card"><div class="cap">Offensive and total rebounds per player appearance</div>
   <div class="chart-box"><canvas id="c4"></canvas></div></div>
@@ -82,7 +81,7 @@
   <div class="kicker">05</div>
   <h2>Huge scoring nights are now routine</h2>
   <p>There were {{sum(R.g40.slice(1,11))}} games of 40 or more points in the ten seasons from 1995-96 to 2004-05.
-  In the ten seasons from 2016-17 to 2025-26 there were {{sum(R.g40.slice(22,32))}}. For 50-point games the counts are
+  In the ten seasons from 2016-17 to 2025-26 there were {{n(sum(R.g40.slice(22,32)))}}. For 50-point games the counts are
   {{sum(R.g50.slice(1,11))}} and {{sum(R.g50.slice(22,32))}}. The largest single game in the data is
   {{R.top_games[0][0]}} with {{R.top_games[0][1]}} points for {{R.top_games[0][2]}} on {{R.top_games[0][3]}}, ahead of
   {{R.top_games[1][0]}}'s {{R.top_games[1][1]}} in {{R.top_games[1][3].slice(0,4)}}.</p>
@@ -106,7 +105,7 @@
   <h2>Each starting position still has its own signature</h2>
   <p>Starting centers grab {{f(R.role_reb[1],1)}} rebounds and block {{f(R.role_blk[1],2)}} shots an appearance, the
   highest of any role. Starting guards lead in assists at {{f(R.role_ast[3],1)}}, about double the
-  {{f(R.role_ast[1],1)}} that centers average. Forwards sit between the two. Bench players trail in every category
+  {{f(R.role_ast[1],1)}} that centers average. Forwards sit between the two. Bench players post the lowest rebounds and blocks,
   mostly because they play fewer minutes.</p>
   <div class="chart-card"><div class="cap">Per-appearance averages by role</div>
   <div class="chart-box"><canvas id="c7"></canvas></div></div>
@@ -117,9 +116,8 @@
   <h2>Home-court advantage has slipped</h2>
   <p>Across the whole data set, {{pct(R.head.home_win)}} of home appearances were in wins. The share was
   {{pct(R.home_win[1])}} in 1995-96 and {{pct(R.home_win[31])}} in 2025-26. Its lowest point was
-  {{pct(Math.min(...R.home_win))}} in {{R.season_labels[R.home_win.indexOf(Math.min(...R.home_win))]}}, the pandemic season
-  played in arenas with few or no fans. Home players also score {{f(R.home_pts[31]-R.away_pts[31],2)}} more points
-  per appearance than visitors in 2025-26.</p>
+  {{pct(Math.min(...R.home_win))}} in {{R.season_labels[R.home_win.indexOf(Math.min(...R.home_win))]}}. Home players scored {{f(R.home_pts[31]-R.away_pts[31],2)}} more points
+  per appearance than visitors in 2025-26, so the edge in scoring is tiny; the win edge is larger than the scoring edge suggests.</p>
   <div class="chart-card"><div class="cap">Share of home-team appearances that were wins, by season (50% would mean no advantage)</div>
   <div class="chart-box"><canvas id="c8"></canvas></div></div>
 </section>
@@ -151,12 +149,12 @@
   <h2>About the data set</h2>
 
   <h3>Where it comes from</h3>
-  <p>A public NBA box-score file named <code>PlayerStatistics.csv</code> (player-level game logs), trimmed to the
+  <p>An NBA player box-score file named <code>PlayerStatistics.csv</code> (player-level game logs) that I downloaded, then trimmed to the
   regular season. It is not stored in this repository because it is {{n(R.head.raw_rows)}} rows and over 100 MB, past GitHub's file limit.
   <code>scripts/build_data.py</code> reads it and writes the small summary files this site loads.</p>
 
   <h3>What one row is</h3>
-  <p>One row is one player in one game for one team: his minutes, points, assists, rebounds, steals, blocks,
+  <p>One row is one player in one game for one team: their minutes, points, assists, rebounds, steals, blocks,
   shots made and attempted, turnovers and fouls. The source names its columns <code>ppg</code>, <code>apg</code>
   and so on, but they hold single-game values, not averages.</p>
 
