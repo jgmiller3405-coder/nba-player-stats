@@ -123,3 +123,21 @@ table.data tr:hover td { background: var(--panel-2); }
   .charts { grid-template-columns: 1fr; }
   .chart-box { height: 280px; }
 }
+
+/* report animations (js/animate.js adds .anim; skipped for reduced-motion users) */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes sweep { from { background-position: -200% 0; } to { background-position: 200% 0; } }
+.anim .hero h1 { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+.anim .hero .byline { animation: rise .8s .15s cubic-bezier(.2,.7,.2,1) both; }
+.anim .hero .summary { animation: rise .8s .3s cubic-bezier(.2,.7,.2,1) both; }
+.anim .stat { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+.anim .stat:nth-child(1) { animation-delay: .45s; }
+.anim .stat:nth-child(2) { animation-delay: .55s; }
+.anim .stat:nth-child(3) { animation-delay: .65s; }
+.anim .stat:nth-child(4) { animation-delay: .75s; }
+.anim .stat:nth-child(5) { animation-delay: .85s; }
+.anim .hero h1 em { background: linear-gradient(90deg, var(--orange) 40%, var(--gold) 50%, var(--orange) 60%) 0 0 / 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sweep 3.5s 1s ease-in-out 1; }
+.anim section.finding:not(.notes) { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.anim section.finding.in { opacity: 1; transform: none; }
+.anim .stat { transition: transform .2s; }
+.anim .stat:hover { transform: translateY(-4px); }
