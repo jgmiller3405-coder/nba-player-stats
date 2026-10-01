@@ -184,35 +184,39 @@
   <div class="chart-card"><div class="cap">Career regular-season points in the data set, top ten players</div>
   <div class="chart-box"><canvas id="c10"></canvas>
     <div class="crown-stage">
-      <svg class="crown-svg" viewBox="0 0 600 340" role="group" aria-label="A cartoon basketball player and a crown">
+      <svg class="crown-svg" viewBox="0 0 600 340" role="group" aria-label="A cartoon basketball player in a Sixers jersey holding a crown">
         <defs><radialGradient id="cg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff3b0" stop-opacity=".95"/><stop offset=".45" stop-color="#ffc53d" stop-opacity=".55"/><stop offset="1" stop-color="#ffc53d" stop-opacity="0"/></radialGradient></defs>
-        <ellipse cx="300" cy="304" rx="150" ry="9" fill="#000" opacity=".25"/>
-        <rect x="362" y="215" width="38" height="86" rx="3" fill="#2a3350"/><rect x="356" y="209" width="50" height="8" rx="3" fill="#3a4670"/>
+        <ellipse cx="300" cy="304" rx="130" ry="9" fill="#000" opacity=".25"/>
         <circle class="crown-glow" cx="300" cy="98" r="0" fill="url(#cg)" opacity="0"/>
-        <rect x="276" y="244" width="16" height="50" rx="6" fill="#8a5a3c"/><rect x="308" y="244" width="16" height="50" rx="6" fill="#8a5a3c"/>
-        <ellipse cx="282" cy="298" rx="18" ry="7" fill="#f4f6fb"/><ellipse cx="318" cy="298" rx="18" ry="7" fill="#f4f6fb"/>
-        <path d="M268 206 H332 L336 250 H304 L300 232 L296 250 H264 Z" fill="#f4f6fb" stroke="#006bb6" stroke-width="3"/>
-        <line x1="264" y1="160" x2="252" y2="232" stroke="#8a5a3c" stroke-width="15" stroke-linecap="round"/>
-        <path d="M262 152 Q300 140 338 152 L334 212 H266 Z" fill="#f4f6fb" stroke="#006bb6" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M262 198 H334 V212 H266 Z" fill="#ed174c"/>
-        <text x="300" y="178" text-anchor="middle" font-size="15" fill="#006bb6" style="font-family:var(--font-head);letter-spacing:1px">76ERS</text>
-        <text x="300" y="196" text-anchor="middle" font-size="16" fill="#ed174c" style="font-family:var(--font-head)">23</text>
+        <rect x="276" y="248" width="16" height="46" rx="6" fill="#8a5a3c"/><rect x="308" y="248" width="16" height="46" rx="6" fill="#8a5a3c"/>
+        <path d="M280 296 q-18 0 -18 6 h34 v-8 z M320 296 q18 0 18 6 h-34 v-8 z" fill="#f4f6fb" stroke="#006bb6" stroke-width="2"/>
+        <path d="M266 206 H334 L342 256 H306 L300 236 L294 256 H258 Z" fill="#f4f6fb" stroke="#006bb6" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M268 212 L262 252 M332 212 L338 252" stroke="#ed174c" stroke-width="3" fill="none"/>
+        <path d="M273 212 L267 252 M327 212 L333 252" stroke="#006bb6" stroke-width="3" fill="none"/>
         <rect x="292" y="130" width="16" height="22" fill="#8a5a3c"/>
+        <path d="M284 148 L300 166 L316 148 Z" fill="#8a5a3c"/>
+        <path d="M264 152 L284 148 L300 166 L316 148 L336 152 L334 214 L266 214 Z" fill="#f4f6fb" stroke="#006bb6" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M287 151 L300 164 L313 151" fill="none" stroke="#ed174c" stroke-width="2"/>
+        <path d="M266 204 H334 V214 H266 Z" fill="#ed174c"/><path d="M266 204 H334" stroke="#006bb6" stroke-width="2.5"/>
+        <text x="300" y="182" text-anchor="middle" font-size="15" fill="#006bb6" stroke="#ed174c" stroke-width=".6" style="font-family:var(--font-head);letter-spacing:1.5px">SIXERS</text>
+        <text x="300" y="199" text-anchor="middle" font-size="15" fill="#ed174c" stroke="#006bb6" stroke-width=".6" style="font-family:var(--font-head)">23</text>
         <circle cx="300" cy="108" r="26" fill="#8a5a3c"/>
         <path d="M274 104 Q274 80 300 80 Q326 80 326 104 Q316 92 300 92 Q284 92 274 104 Z" fill="#17120f"/>
         <rect x="274" y="92" width="52" height="6" rx="3" fill="#f4f6fb"/>
         <circle cx="291" cy="108" r="2.6" fill="#17120f"/><circle cx="309" cy="108" r="2.6" fill="#17120f"/>
         <path d="M290 122 Q300 129 310 122" fill="none" stroke="#17120f" stroke-width="2.4" stroke-linecap="round"/>
         <path d="M278 116 Q282 134 300 134 Q318 134 322 116 Q312 128 300 128 Q288 128 278 116 Z" fill="#17120f" opacity=".85"/>
-        <line class="crown-arm" x1="336" y1="160" x2="350" y2="232" stroke="#8a5a3c" stroke-width="15" stroke-linecap="round"/>
-        <g class="crown-piece" transform="translate(381 203)" tabindex="0" role="button" aria-label="Pick up the crown to reveal the chart">
-          <circle cx="0" cy="0" r="34" fill="transparent"/>
+        <path class="crown-arm-l" d="" fill="none" stroke="#8a5a3c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="crown-arm-r" d="" fill="none" stroke="#8a5a3c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+        <g class="crown-piece" transform="translate(300 218)" tabindex="0" role="button" aria-label="Click the crown to watch him put it on and reveal the chart">
+          <circle cx="0" cy="0" r="36" fill="transparent"/>
           <path d="M-22 12 L-22 -8 L-11 2 L0 -14 L11 2 L22 -8 L22 12 Z" fill="#ffc53d" stroke="#b8860b" stroke-width="2" stroke-linejoin="round"/>
           <rect x="-22" y="6" width="44" height="6" fill="#e0a21b"/>
           <circle cx="-22" cy="-8" r="3" fill="#ed174c"/><circle cx="0" cy="-14" r="3.4" fill="#2bb8a7"/><circle cx="22" cy="-8" r="3" fill="#ed174c"/>
         </g>
+        <circle class="crown-hand-l" r="8.5" fill="#8a5a3c"/><circle class="crown-hand-r" r="8.5" fill="#8a5a3c"/>
       </svg>
-      <div class="crown-hint">Click the crown to see him put it on and reveal the chart</div>
+      <div class="crown-hint">Click the crown to watch him put it on and reveal the chart</div>
     </div>
   </div></div>
 </section>
@@ -272,6 +276,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/ball.js?v=5"></script>
 <script src="js/hoop.js?v=1"></script>
-<script src="js/crown.js?v=1"></script>
+<script src="js/crown.js?v=2"></script>
 </body>
 </html>
