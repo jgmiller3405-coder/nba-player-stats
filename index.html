@@ -5,13 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Three-Point Takeover | NBA Box Score Report</title>
 <meta name="description" content="Thirty years of NBA regular-season player box scores, and what changed in how the game is played.">
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
-    <h1>The <em>Three-Point</em> Takeover</h1>
+    <div class="hero-top">
+      <h1>The <em>Three-Point</em> Takeover</h1>
+      <figure class="ball-fig" aria-label="Half of all threes in the data were made in the last {{R.head.half_threes_seasons}} seasons">
+        <div class="ball-wrap">
+          <svg class="ball" viewBox="0 0 100 100" aria-hidden="true">
+            <defs><radialGradient id="bg" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ff9a4d"/><stop offset="1" stop-color="#d9560a"/></radialGradient></defs>
+            <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+            <g fill="none" stroke="#2a1405" stroke-width="2.2" stroke-linecap="round">
+              <circle cx="50" cy="50" r="48"/>
+              <path d="M50 2 V98"/><path d="M2 50 H98"/>
+              <path d="M16 16 C36 32 36 68 16 84"/><path d="M84 16 C64 32 64 68 84 84"/>
+            </g>
+          </svg>
+          <div class="ball-stat">50%</div>
+        </div>
+        <figcaption>of all threes in this data were made in the last {{R.head.half_threes_seasons}} seasons (since {{R.head.half_threes_since}})</figcaption>
+      </figure>
+    </div>
     <div class="byline">By Jason Miller &middot; NBA regular-season player box scores, 1994-95 to 2025-26</div>
     <p class="summary">
       This report covers {{n(R.head.kept_rows)}} player appearances from {{n(R.head.games)}} regular-season games
@@ -192,9 +209,9 @@
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="js/common.js?v=2"></script>
-<script src="data/report_data.js?v=2"></script>
-<script src="js/report.js?v=2"></script>
-<script src="js/animate.js?v=2"></script>
+<script src="js/common.js?v=3"></script>
+<script src="data/report_data.js?v=3"></script>
+<script src="js/report.js?v=3"></script>
+<script src="js/animate.js?v=3"></script>
 </body>
 </html>

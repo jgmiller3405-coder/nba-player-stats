@@ -164,6 +164,14 @@ R["head"] = {
     "total_tpm": int(df.tpm.sum()), "total_pts": int(df.pts.sum()),
 }
 
+# how many of the most recent seasons it takes to reach half of all threes made
+tpm_by_season = df.groupby("season").tpm.sum()
+rev_cum = tpm_by_season.sort_index(ascending=False).cumsum() / tpm_by_season.sum()
+half_n = int((rev_cum < 0.5).sum()) + 1
+R["head"]["half_threes_seasons"] = half_n
+R["head"]["half_threes_since"] = f"{tpm_by_season.index.max() - half_n + 1}-{str(tpm_by_season.index.max() - half_n + 2)[2:]}"
+R["head"]["total_seasons"] = int(len(tpm_by_season) - 1)  # excludes partial 1994-95
+
 OUT.joinpath("report_data.js").write_text("window.REPORT = " + json.dumps(R, separators=(",", ":")) + ";\n", encoding="utf-8")
 print(json.dumps(R["head"], indent=1))
 print({k: v for k, v in R.items() if k in ("top_games", "lead_labels", "lead_pts", "fr_corr_tpa_win")})
