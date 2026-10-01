@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Three-Point Takeover | NBA Box Score Report</title>
 <meta name="description" content="Thirty years of NBA regular-season player box scores, and what changed in how the game is played.">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -159,8 +159,36 @@
   {{pct(R.home_win[1])}} in 1995-96 and {{pct(R.home_win[31])}} in 2025-26. Its lowest point was
   {{pct(Math.min(...R.home_win))}} in {{R.season_labels[R.home_win.indexOf(Math.min(...R.home_win))]}}. Home players scored {{f(R.home_pts[31]-R.away_pts[31],2)}} more points
   per appearance than visitors in 2025-26, so the edge in scoring is tiny; the win edge is larger than the scoring edge suggests.</p>
+  <div class="f8-row">
   <div class="chart-card"><div class="cap">Share of home-team appearances that were wins, by season (50% would mean no advantage)</div>
   <div class="chart-box"><canvas id="c8"></canvas></div></div>
+  <div class="crowd-card" role="img" aria-label="Animation: a crowd yells at a shooter, who misses the shot">
+    <div class="cap">The crowd gets loud, and the shot still misses</div>
+    <svg class="crowd-svg" viewBox="0 0 340 340" aria-hidden="true">
+      <defs><linearGradient id="crowdbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e1424"/><stop offset="1" stop-color="#1b2340"/></linearGradient></defs>
+      <rect width="340" height="340" rx="8" fill="url(#crowdbg)"/>
+      <rect x="0" y="190" width="340" height="14" fill="#2c3552"/>
+      <path d="M40 190 Q150 40 260 190" fill="none" stroke="#3a4670" stroke-width="2" stroke-dasharray="5 5"/>
+      <rect x="289" y="100" width="6" height="90" fill="#5b6688"/>
+      <rect x="276" y="36" width="9" height="66" rx="2" fill="#dfe6f5"/>
+      <g class="rim"><path d="M226 90 H276" stroke="#ff4d2e" stroke-width="4" stroke-linecap="round"/>
+        <path d="M230 91 L238 118 M242 91 L246 118 M254 91 L254 118 M266 91 L262 118 M274 91 L270 118 M236 106 H268" stroke="#e8eefc" stroke-width="1.3" fill="none" opacity=".7"/></g>
+      <g class="shooter">
+        <rect x="93" y="162" width="6" height="28" rx="3" fill="#8a5a3c"/><rect x="103" y="162" width="6" height="28" rx="3" fill="#8a5a3c"/>
+        <rect x="90" y="132" width="24" height="34" rx="6" fill="#ff7a1a"/>
+        <text x="102" y="155" text-anchor="middle" font-size="14" fill="#fff" style="font-family:var(--font-head)">7</text>
+        <rect class="s-arm s-arm-l" x="86" y="134" width="6" height="26" rx="3" fill="#8a5a3c"/>
+        <rect class="s-arm s-arm-r" x="112" y="134" width="6" height="26" rx="3" fill="#8a5a3c"/>
+        <circle class="s-head" cx="102" cy="120" r="9" fill="#8a5a3c"/>
+      </g>
+      <g class="ball"><circle r="7" fill="#ff7a1a" stroke="#2a1405" stroke-width="1.2"/><path d="M-7 0 H7 M0 -7 V7" stroke="#2a1405" stroke-width="1" fill="none"/></g>
+      <g class="fans"></g>
+      <text class="bubble b1" x="60" y="228" font-size="22" fill="#ffc53d" style="font-family:var(--font-head);letter-spacing:1px">BOOO!</text>
+      <text class="bubble b2" x="170" y="222" font-size="26" fill="#ff7a1a" style="font-family:var(--font-head);letter-spacing:1px">MISS!</text>
+      <text class="bubble b3" x="250" y="232" font-size="20" fill="#2bb8a7" style="font-family:var(--font-head);letter-spacing:1px">AIRBALL!</text>
+    </svg>
+  </div>
+  </div>
 </section>
 
 <section class="finding" id="f9">
@@ -277,5 +305,6 @@
 <script src="js/ball.js?v=5"></script>
 <script src="js/hoop.js?v=1"></script>
 <script src="js/crown.js?v=2"></script>
+<script src="js/crowd.js?v=1"></script>
 </body>
 </html>
