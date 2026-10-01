@@ -170,3 +170,13 @@ table.data tr:hover td { background: var(--panel-2); }
 .hoop-net { transform-box: fill-box; transform-origin: 50% 0; }
 .hoop-hint { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; color: var(--muted); font-size: 13px; pointer-events: none; transition: opacity .2s; }
 .hoop-stage.shot .hoop-hint { opacity: 0; }
+
+/* finding 10: chart hidden until the crown goes on his head */
+.crown-stage { position: absolute; inset: 0; z-index: 3; background: var(--panel); border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: opacity .55s ease; }
+.crown-stage.done { opacity: 0; pointer-events: none; }
+.crown-svg { width: 100%; height: 100%; max-width: 640px; }
+.crown-piece { cursor: pointer; outline: none; filter: drop-shadow(0 0 3px rgba(255,197,61,.45)); }
+.crown-stage:not(.shot) .crown-piece:hover, .crown-stage:not(.shot) .crown-piece:focus-visible { filter: drop-shadow(0 0 10px #ffc53d); }
+.crown-stage.shot .crown-piece { cursor: default; }
+.crown-hint { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; color: var(--muted); font-size: 13px; pointer-events: none; transition: opacity .2s; }
+.crown-stage.shot .crown-hint { opacity: 0; }
