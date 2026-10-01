@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Three-Point Takeover | NBA Box Score Report</title>
 <meta name="description" content="Thirty years of NBA regular-season player box scores, and what changed in how the game is played.">
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -59,7 +59,31 @@
   <p>Measured as a share of all field-goal attempts, threes went from {{pct(R.s_tpar[1])}} to {{pct(R.s_tpar[31])}}.
   Roughly two of every five shots now come from behind the arc.</p>
   <div class="chart-card"><div class="cap">Three-point attempts per player appearance (left) and share of shots that are threes (right)</div>
-  <div class="chart-box"><canvas id="c1"></canvas></div></div>
+  <div class="chart-box"><canvas id="c1"></canvas>
+    <div class="hoop-stage">
+      <svg class="hoop-svg" viewBox="0 0 600 340" role="group" aria-label="Hoop">
+        <defs><radialGradient id="hb" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ff9a4d"/><stop offset="1" stop-color="#d9560a"/></radialGradient></defs>
+        <rect x="486" y="56" width="9" height="130" rx="2" fill="#dfe6f5" opacity=".9"/>
+        <path d="M394 150 A46 9 0 0 1 486 150" fill="none" stroke="#c23a14" stroke-width="5" stroke-linecap="round"/>
+        <g class="hoop-ball" tabindex="0" role="button" aria-label="Shoot the basketball to reveal the chart">
+          <circle cx="50" cy="50" r="64" fill="transparent"/>
+          <circle cx="50" cy="50" r="48" fill="url(#hb)"/>
+          <g fill="none" stroke="#2a1405" stroke-width="3" stroke-linecap="round">
+            <circle cx="50" cy="50" r="48"/>
+            <path d="M50 2 V98"/><path d="M2 50 H98"/>
+            <path d="M16 16 C36 32 36 68 16 84"/><path d="M84 16 C64 32 64 68 84 84"/>
+          </g>
+          <circle class="hoop-glow" cx="50" cy="50" r="52"/>
+        </g>
+        <g class="hoop-net" fill="none" stroke="#e8eefc" stroke-width="1.6" opacity=".75">
+          <path d="M394 150 L410 215 M409 150 L418 215 M425 150 L427 215 M440 150 L440 215 M455 150 L453 215 M471 150 L462 215 M486 150 L470 215"/>
+          <path d="M399 170 Q440 178 481 170 M404 190 Q440 198 476 190 M409 210 Q440 218 471 210"/>
+        </g>
+        <path d="M394 150 A46 9 0 0 0 486 150" fill="none" stroke="#ff4d2e" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="hoop-hint">Click the basketball to take the shot and reveal the chart</div>
+    </div>
+  </div></div>
 </section>
 
 <section class="finding" id="f2">
@@ -215,5 +239,6 @@
 <script src="js/animate.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/ball.js?v=5"></script>
+<script src="js/hoop.js?v=1"></script>
 </body>
 </html>
